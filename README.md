@@ -1,3 +1,5 @@
+This is as far as I got trying to stay within the allocated 2 hours.  
+
 ## Technical Assessment
 
 ### Shopping Cart
