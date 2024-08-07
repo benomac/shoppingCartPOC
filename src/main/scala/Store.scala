@@ -1,10 +1,8 @@
-import Shop.String
-
 // I'm using vars here as I'm treating this as "database" which are mutable,
-// and can kinda be considered "not scala" code, as opposed to the Maps in shoppingCart
-// sticking with the immutable thing.
+// as opposed to the Maps in shoppingCart that are immutable.
 object Store:
 
+  val storage = new Storage[String, ShoppingCart]
   private class Ref[A](private var value: A) {
     def get: A = value
 
@@ -22,15 +20,7 @@ object Store:
       storage.get(key).map(_.get)
     }
 
-    def update(key: K, value: V): Unit = {
-      storage.get(key).foreach(_.set(value))
-    }
-
     def remove(key: K): Unit = {
       storage -= key
-    }
-
-    def getAll: Map[K, V] = {
-      storage.map { case (k, ref) => k -> ref.get }
     }
   }
